@@ -124,9 +124,21 @@ function UsuariosPage() {
     }
 
     return (
-        <div className="min-h-screen bg-gray-100">
+        <div className="min-h-screen relative">
+            {/* Fondo con la imagen */}
+            <div
+                className="absolute inset-0 -z-10"
+                style={{
+                    backgroundImage: "url('/weaves.jpg')",
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    opacity: 0.2, // Aplica opacidad a la imagen
+                }}
+            ></div>
+
             <Header />
-            <main className="container mx-auto px-4 py-8">
+            <main className="container mx-auto px-4 py-8 relative">
+                {/* Contenido principal */}
                 <div className="bg-white shadow-md rounded-lg overflow-hidden">
                     <div className="p-4 flex justify-between items-center border-b">
                         <h1 className="text-2xl font-bold text-gray-800">Usuarios</h1>
