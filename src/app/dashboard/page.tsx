@@ -15,7 +15,7 @@ function DashboardPage() {
             <div
                 className="absolute inset-0 -z-10"
                 style={{
-                    backgroundImage: "url('/istockphoto-1351972959-612x612.jpg')",
+                    backgroundImage: "url('/weaves.jpg')",
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     opacity: 0.2, // Aplica opacidad a la imagen
