@@ -3,7 +3,7 @@
 import { withAuth } from '@/app/components/auth/withAuth'
 import { Header } from '@/app/components/headers/headerDs'
 import { useAuth } from '@/app/hooks/useAuth'
-import { FaUsers } from 'react-icons/fa'
+import { FaUsers, FaPaw } from 'react-icons/fa'
 import Link from 'next/link'
 
 function DashboardPage() {
@@ -38,13 +38,20 @@ function DashboardPage() {
                     </div>
                 </div>
 
-                <div className="mt-12 text-center">
+                <div className="mt-12 text-center flex justify-center space-x-4">
                     <Link
                         href="/usuarios"
                         className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full inline-flex items-center transition duration-300 ease-in-out transform hover:scale-105"
                     >
                         <FaUsers className="mr-2" />
                         <span>Administrar Usuarios</span>
+                    </Link>
+                    <Link
+                        href="/pokemones"
+                        className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-full inline-flex items-center transition duration-300 ease-in-out transform hover:scale-105"
+                    >
+                        <FaPaw className="mr-2" />
+                        <span>Administrar Pokémones</span>
                     </Link>
                 </div>
             </div>
@@ -53,3 +60,4 @@ function DashboardPage() {
 }
 
 export default withAuth(DashboardPage)
+

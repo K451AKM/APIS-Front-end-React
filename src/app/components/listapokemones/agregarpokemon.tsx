@@ -31,9 +31,9 @@ interface NuevoPokemon {
 
 // Array of Pokemon types for dropdown
 const POKEMON_TYPES = [
-    'Normal', 'Fire', 'Water', 'Electric', 'Grass', 'Ice',
-    'Fighting', 'Poison', 'Ground', 'Flying', 'Psychic',
-    'Bug', 'Rock', 'Ghost', 'Dragon', 'Dark', 'Steel', 'Fairy'
+    'Normal', 'Fuego', 'Agua', 'Eléctrico', 'Planta', 'Hielo',
+    'Lucha', 'Veneno', 'Tierra', 'Volador', 'Psíquico',
+    'Bicho', 'Roca', 'Fantasma', 'Dragón', 'Siniestro', 'Acero', 'Hada'
 ]
 
 export default function AgregarPokemon({ onClose, onAdd }: AgregarPokemonProps) {

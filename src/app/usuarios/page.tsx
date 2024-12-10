@@ -175,7 +175,7 @@ function UsuariosPage() {
                         </div>
                         <table className="w-full">
                             <thead>
-                                <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                                <tr className="bg-indigo-100 text-gray-600 uppercase text-sm leading-normal">
                                     <th className="py-3 px-6 text-left">Nombre</th>
                                     <th className="py-3 px-6 text-left">Correo Electrónico</th>
                                     <th className="py-3 px-6 text-left">Fecha de Nacimiento</th>

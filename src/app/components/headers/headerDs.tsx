@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { FaBars, FaTimes, FaUserCircle, FaSignOutAlt, FaUsers, FaThLarge } from 'react-icons/fa';
+import { FaBars, FaTimes, FaUserCircle, FaSignOutAlt, FaUsers, FaThLarge, FaDragon } from 'react-icons/fa';
 import Link from 'next/link'
 import { useAuth } from '@/app/hooks/useAuth'
 
@@ -76,21 +76,40 @@ export function Header() {
                             >
                                 <FaTimes className="h-6 w-6" />
                             </button>
-                            <nav className="mt-8">
-                                <ul>
+                            <nav className="mt-8 flex flex-col h-full">
+                                <ul className="flex-grow">
                                     <li>
-                                        <Link href="/dashboard" className="flex items-center py-2 px-4 text-gray-700 hover:bg-gray-100">
+                                        <Link href="/dashboard" className="flex items-center py-2 px-4 text-gray-700 hover:bg-gray-100 transition duration-300 ease-in-out transform hover:scale-105 hover:text-blue-600">
                                             <FaThLarge className="mr-2" />
                                             Dashboard
                                         </Link>
-
-                                        <Link href="/usuarios" className="flex items-center py-2 px-4 text-gray-700 hover:bg-gray-100">
+                                    </li>
+                                    <li>
+                                        <Link href="/usuarios" className="flex items-center py-2 px-4 text-gray-700 hover:bg-gray-100 transition duration-300 ease-in-out transform hover:scale-105 hover:text-blue-600">
                                             <FaUsers className="mr-2" />
                                             Lista de Usuarios
                                         </Link>
                                     </li>
+                                    <li>
+                                        <Link href="/pokemones" className="flex items-center py-2 px-4 text-gray-700 hover:bg-gray-100 transition duration-300 ease-in-out transform hover:scale-105 hover:text-blue-600">
+                                            <FaDragon className="mr-2" />
+                                            Administrar Pokémones
+                                        </Link>
+                                    </li>
                                     {/* Agrega más opciones de menú aquí */}
                                 </ul>
+                                <div className="mt-auto">
+                                    <button
+                                        onClick={() => {
+                                            logout();
+                                            setIsMenuOpen(false);
+                                        }}
+                                        className="flex items-center w-full py-2 px-4 text-gray-700 hover:bg-gray-100 transition duration-300 ease-in-out transform hover:scale-105 hover:text-blue-600"
+                                    >
+                                        <FaSignOutAlt className="mr-2" />
+                                        Cerrar Sesión
+                                    </button>
+                                </div>
                             </nav>
                         </div>
                     </div>

@@ -137,13 +137,12 @@ function PokemonesPage() {
             <div
                 className="absolute inset-0 -z-10"
                 style={{
-                    backgroundImage: "url('/pokemon-background.jpg')",
+                    backgroundImage: "url('/wabesr.jpg')",
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     opacity: 0.2,
                 }}
             ></div>
-
             <Header />
             <main className="container mx-auto px-4 py-8 relative">
                 <div className="bg-white shadow-md rounded-lg overflow-hidden">
@@ -188,7 +187,7 @@ function PokemonesPage() {
                             <>
                                 <table className="w-full">
                                     <thead>
-                                        <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                                        <tr className="bg-indigo-100 text-gray-600 uppercase text-sm leading-normal">
                                             <th className="py-3 px-6 text-left">Nombre</th>
                                             <th className="py-3 px-6 text-left">Tipo</th>
                                             <th className="py-3 px-6 text-left">Habilidad</th>
