@@ -3,11 +3,11 @@
 import { useState, useEffect } from 'react'
 import { Header } from '@/app/components/headers/headerDs'
 import { withAuth } from '@/app/components/auth/withAuth'
-import { FaSearch, FaEdit, FaTrash, FaUserPlus, FaChevronLeft, FaChevronRight, FaEye, FaAngleDoubleLeft, FaAngleDoubleRight } from 'react-icons/fa'
+import { FaUserPlus } from 'react-icons/fa'
+import { TableUsuarios } from '@/app/components/tables/tablasUsuarios'
 import VerUsuario from '@/app/components/listaUsuarios/verusuario'
 import EditarUsuario from '@/app/components/listaUsuarios/editarUsuario'
 import AgregarUsuario from '@/app/components/listaUsuarios/agregarUsuario'
-import { format } from 'date-fns'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
@@ -24,9 +24,6 @@ interface Usuario {
 
 function UsuariosPage() {
     const [usuarios, setUsuarios] = useState<Usuario[]>([])
-    const [busqueda, setBusqueda] = useState('')
-    const [paginaActual, setPaginaActual] = useState(1)
-    const [usuariosPorPagina, setUsuariosPorPagina] = useState(10)
     const [usuarioSeleccionado, setUsuarioSeleccionado] = useState<number | null>(null)
     const [mostrarVerUsuario, setMostrarVerUsuario] = useState(false)
     const [mostrarEditarUsuario, setMostrarEditarUsuario] = useState(false)
@@ -55,25 +52,6 @@ function UsuariosPage() {
             })
         }
     }
-
-    const usuariosFiltrados = usuarios.filter(usuario =>
-        usuario.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
-        usuario.apellido.toLowerCase().includes(busqueda.toLowerCase()) ||
-        usuario.correo_electronico.toLowerCase().includes(busqueda.toLowerCase())
-    )
-
-    const indexOfLastUsuario = paginaActual * usuariosPorPagina
-    const indexOfFirstUsuario = indexOfLastUsuario - usuariosPorPagina
-    const usuariosActuales = usuariosFiltrados.slice(indexOfFirstUsuario, indexOfLastUsuario)
-
-    const totalPaginas = Math.ceil(usuariosFiltrados.length / usuariosPorPagina)
-
-    const cambiarPagina = (numeroPagina: number) => {
-        setPaginaActual(numeroPagina)
-    }
-
-    const irAPrimeraPagina = () => setPaginaActual(1)
-    const irAUltimaPagina = () => setPaginaActual(totalPaginas)
 
     const handleVerUsuario = (id: number) => {
         setUsuarioSeleccionado(id)
@@ -125,20 +103,18 @@ function UsuariosPage() {
 
     return (
         <div className="min-h-screen relative">
-            {/* Fondo con la imagen */}
             <div
                 className="absolute inset-0 -z-10"
                 style={{
                     backgroundImage: "url('/weaves.jpg')",
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
-                    opacity: 0.2, // Aplica opacidad a la imagen
+                    opacity: 0.2,
                 }}
             ></div>
 
             <Header />
             <main className="container mx-auto px-4 py-8 relative">
-                {/* Contenido principal */}
                 <div className="bg-white shadow-md rounded-lg overflow-hidden">
                     <div className="p-4 flex justify-between items-center border-b">
                         <h1 className="text-2xl font-bold text-gray-800">Usuarios</h1>
@@ -151,131 +127,12 @@ function UsuariosPage() {
                         </button>
                     </div>
                     <div className="p-4">
-                        <div className="mb-4 flex items-center justify-between">
-                            <div className="flex items-center flex-1 mr-4">
-                                <FaSearch className="text-gray-400 mr-2" />
-                                <input
-                                    type="text"
-                                    placeholder="Buscar usuarios..."
-                                    className="w-full p-2 border rounded-md"
-                                    value={busqueda}
-                                    onChange={(e) => setBusqueda(e.target.value)}
-                                />
-                            </div>
-                            <select
-                                className="p-2 border rounded-md"
-                                value={usuariosPorPagina}
-                                onChange={(e) => setUsuariosPorPagina(Number(e.target.value))}
-                            >
-                                <option value={5}>5 por página</option>
-                                <option value={10}>10 por página</option>
-                                <option value={20}>20 por página</option>
-                                <option value={usuariosFiltrados.length}>Mostrar todos</option>
-                            </select>
-                        </div>
-                        <table className="w-full">
-                            <thead>
-                                <tr className="bg-indigo-100 text-gray-600 uppercase text-sm leading-normal">
-                                    <th className="py-3 px-6 text-left">Nombre</th>
-                                    <th className="py-3 px-6 text-left">Correo Electrónico</th>
-                                    <th className="py-3 px-6 text-left">Fecha de Nacimiento</th>
-                                    <th className="py-3 px-6 text-center">Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody className="text-gray-600 text-sm font-light">
-                                {usuariosActuales.map((usuario) => (
-                                    <tr key={usuario.id} className="border-b border-gray-200 hover:bg-gray-100">
-                                        <td className="py-3 px-6 text-left whitespace-nowrap">
-                                            <div className="flex items-center">
-                                                <div className="mr-2">
-                                                    {usuario.url_imagenPerfil ? (
-                                                        <img className="w-8 h-8 rounded-full" src={usuario.url_imagenPerfil} alt={`${usuario.nombre} ${usuario.apellido}`} />
-                                                    ) : (
-                                                        <div className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center">
-                                                            <span className="text-gray-600 font-medium">{usuario.nombre[0]}{usuario.apellido[0]}</span>
-                                                        </div>
-                                                    )}
-                                                </div>
-                                                <span>{usuario.nombre} {usuario.apellido}</span>
-                                            </div>
-                                        </td>
-                                        <td className="py-3 px-6 text-left">{usuario.correo_electronico}</td>
-                                        <td className="py-3 px-6 text-left">
-                                            {format(new Date(usuario.fecha_nacimiento), 'dd/MM/yyyy')}
-                                        </td>
-                                        <td className="py-3 px-6 text-center">
-                                            <div className="flex items-center justify-center gap-2">
-                                                <button
-                                                    className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded text-xs flex items-center"
-                                                    onClick={() => handleVerUsuario(usuario.id)}
-                                                >
-                                                    <FaEye className="mr-1" />
-                                                    Ver
-                                                </button>
-                                                <button
-                                                    className="bg-yellow-500 hover:bg-yellow-600 text-white px-2 py-1 rounded text-xs flex items-center"
-                                                    onClick={() => handleEditarUsuario(usuario.id)}
-                                                >
-                                                    <FaEdit className="mr-1" />
-                                                    Editar
-                                                </button>
-                                                <button
-                                                    className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded text-xs flex items-center"
-                                                    onClick={() => handleEliminarUsuario(usuario.id)}
-                                                >
-                                                    <FaTrash className="mr-1" />
-                                                    Eliminar
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                        <div className="flex justify-between items-center mt-4">
-                            <div>
-                                Mostrando {indexOfFirstUsuario + 1} - {Math.min(indexOfLastUsuario, usuariosFiltrados.length)} de {usuariosFiltrados.length} usuarios
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <button
-                                    onClick={irAPrimeraPagina}
-                                    disabled={paginaActual === 1}
-                                    className="px-3 py-1 border rounded-md disabled:opacity-50"
-                                >
-                                    <FaAngleDoubleLeft />
-                                </button>
-                                <button
-                                    onClick={() => cambiarPagina(paginaActual - 1)}
-                                    disabled={paginaActual === 1}
-                                    className="px-3 py-1 border rounded-md disabled:opacity-50"
-                                >
-                                    <FaChevronLeft />
-                                </button>
-                                {[...Array(totalPaginas)].map((_, index) => (
-                                    <button
-                                        key={index}
-                                        onClick={() => cambiarPagina(index + 1)}
-                                        className={`px-3 py-1 border rounded-md ${paginaActual === index + 1 ? 'bg-blue-500 text-white' : ''}`}
-                                    >
-                                        {index + 1}
-                                    </button>
-                                ))}
-                                <button
-                                    onClick={() => cambiarPagina(paginaActual + 1)}
-                                    disabled={paginaActual === totalPaginas}
-                                    className="px-3 py-1 border rounded-md disabled:opacity-50"
-                                >
-                                    <FaChevronRight />
-                                </button>
-                                <button
-                                    onClick={irAUltimaPagina}
-                                    disabled={paginaActual === totalPaginas}
-                                    className="px-3 py-1 border rounded-md disabled:opacity-50"
-                                >
-                                    <FaAngleDoubleRight />
-                                </button>
-                            </div>
-                        </div>
+                        <TableUsuarios
+                            usuarios={usuarios}
+                            onVerUsuario={handleVerUsuario}
+                            onEditarUsuario={handleEditarUsuario}
+                            onEliminarUsuario={handleEliminarUsuario}
+                        />
                     </div>
                 </div>
             </main>
