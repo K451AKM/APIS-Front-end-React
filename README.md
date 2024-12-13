@@ -91,31 +91,31 @@ El proyecto está organizado de la siguiente manera:
 
 Estas capturas de pantalla proporcionan una vista previa visual de las principales funcionalidades y páginas de nuestra aplicación.
 
-## Instalación y Configuración
+# Instalación y Configuración
 
 1. **Clona el repositorio:**
    ```bash
    git clone https://github.com/K451AKM/APIS-consumo2/tree/master
+   ```
 
 2. **Instala las dependencias:**
-   \`\`\`bash
+   ```bash
    npm install
-   \`\`\`
+   ```
 
 3. **Configura las variables de entorno:**
-   - Crea un archivo \`.env.local\` en la raíz del proyecto.
+   - Crea un archivo `.env.local` en la raíz del proyecto.
    - Añade las siguientes variables, ajustando los valores según tu configuración:
-     \`\`\`
+     ```bash
      NEXT_PUBLIC_API_URL=http://tu-backend-laravel.com/api
-     \`\`\`
+     ```
 
 4. **Inicia el servidor de desarrollo:**
-   \`\`\`bash
+   ```bash
    npm run dev
-   \`\`\`
+   ```
 
 5. **Accede a la aplicación:**
-   Abre tu navegador y visita \`http://localhost:3000\` para ver la aplicación en funcionamiento.
+   Abre tu navegador y visita `http://localhost:3000` para ver la aplicación en funcionamiento.
 
-Nota: Asegúrate de que tu backend de Laravel esté configurado y funcionando correctamente antes de iniciar el frontend.
-
+**Nota:** Asegúrate de que tu backend de Laravel esté configurado y funcionando correctamente antes de iniciar el frontend.
