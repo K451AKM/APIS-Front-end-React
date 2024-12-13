@@ -4,9 +4,9 @@ Este proyecto es una aplicación web que consume APIs, desarrollada con React y 
 
 ## Características Principales
 
-- **Autenticación de Usuarios**: Sistema de login y manejo de sesiones utilizando tokens JWT [^4].
-- **Dashboard**: Página principal con información personalizada para el usuario autenticado [^5].
-- **Gestión de Usuarios**: Funcionalidades para agregar [^6] y editar [^8] usuarios.
+- **Autenticación de Usuarios**: Sistema de login y manejo de sesiones utilizando tokens JWT.
+- **Dashboard**: Página principal con información personalizada para el usuario autenticado.
+- **Gestión de Usuarios**: Funcionalidades para agregar y editar usuarios.
 - **Diseño Responsivo**: Interfaz adaptable a diferentes dispositivos y tamaños de pantalla.
 
 ## Tecnologías Utilizadas
@@ -98,11 +98,4 @@ Estas capturas de pantalla proporcionan una vista previa visual de las principal
 
 5. Abre \`http://localhost:3000\` en tu navegador para ver la aplicación.
 
-## Contribución
-
-Las contribuciones son bienvenidas. Por favor, abre un issue o realiza un pull request para sugerir cambios o mejoras.
-
-## Licencia
-
-[Incluir información sobre la licencia del proyecto]
 
