@@ -60,8 +60,8 @@ El proyecto está organizado de la siguiente manera:
 
 #### Acciones de Usuario
 - ![Agregar Usuario](https://github.com/K451AKM/APIS-consumo2/blob/master/agregarUsuario.jpg)
-- ![Editar Usuario](https://raw.githubusercontent.com/tu-usuario/tu-repo/main/screenshots/editar-usuario.png)
-- ![Ver Usuario](https://raw.githubusercontent.com/tu-usuario/tu-repo/main/screenshots/ver-usuario.png)
+- ![Editar Usuario](https://github.com/K451AKM/APIS-consumo2/blob/master/usuarioEditado.jpg)
+- ![Ver Usuario](https://github.com/K451AKM/APIS-consumo2/blob/master/verUsuario.jpg)
 - ![Eliminar Usuario](https://github.com/K451AKM/APIS-consumo2/blob/master/eliminarUsuario.jpg)
 
 ### Gestión de Pokémones
